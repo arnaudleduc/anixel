@@ -7,7 +7,6 @@ const Lighting: React.FC = () => {
         color={"brown"}
         castShadow
         position={[-0.5, 0.3, 0]}
-        shadow-mapSize={[2048, 2048]}
       />
       <directionalLight
         intensity={1}
@@ -16,11 +15,17 @@ const Lighting: React.FC = () => {
         position={[0.5, 0.1, 0.2]}
       />
       <directionalLight
-        intensity={20}
+        intensity={2}
         color={"yellow"}
         castShadow
-        position={[0, 0.05, -5]}
-      />
+        position={[0, 25, -130]}
+        shadow-mapSize={[2048, 2048]}
+      >
+        <orthographicCamera
+          attach={"shadow-camera"}
+          args={[-10, 10, 10, -10]}
+        />
+      </directionalLight>
     </>
   );
 };

@@ -1,7 +1,7 @@
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
 
-import Experience from "./components/Experience/Experience";
+import Experience from "./components/experience/Experience";
 
 function App() {
   return (

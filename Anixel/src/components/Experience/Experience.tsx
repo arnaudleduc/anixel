@@ -1,14 +1,21 @@
 import { Canvas } from "@react-three/fiber";
-import MenuScene from "../MenuScene/MenuScene";
-import MainCamera from "../MainCamera/MainCamera";
-import Lighting from "../Lighting/Lighting";
-import { Environment } from "@react-three/drei";
+import MenuScene from "../menuScene/MenuScene";
+import MainCamera from "../mainCamera/MainCamera";
+import Lighting from "../lighting/Lighting";
+import {
+  BakeShadows,
+  Environment,
+  Merged,
+  SoftShadows,
+} from "@react-three/drei";
+import { Perf } from "r3f-perf";
 
 // import { OrbitControls } from "@react-three/drei";
 
 const Experience: React.FC = () => {
   return (
     <Canvas shadows>
+      <Perf />
       {/* Scene configuration */}
       {/* <OrbitControls /> */}
 
@@ -20,6 +27,8 @@ const Experience: React.FC = () => {
         backgroundIntensity={0.6}
         environmentIntensity={0.1}
       />
+      <SoftShadows />
+      <BakeShadows />
       <MainCamera />
       <Lighting />
 

@@ -2,6 +2,7 @@ import * as THREE from "three";
 import React from "react";
 import { Sphere, useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+import BeachWater from "../beachWater/BeachWater";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -23,7 +24,8 @@ const MenuSceneBeach: React.FC = () => {
           <meshStandardMaterial color={"#E3BA66"} />
         </mesh>
       </group>
-      <Sphere scale={10} position={[0, 2, -35]} material-color={"orange"} />
+      <Sphere scale={10} position={[0, 2, -35]} material-color={"#ff7f00"} />
+      <BeachWater />
     </>
   );
 };
