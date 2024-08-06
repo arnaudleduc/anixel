@@ -1,7 +1,7 @@
 import MenuSceneAssets from "../menuSceneAssets/MenuSceneAssets";
 import MenuSceneBeach from "../menuSceneBeach/MenuSceneBeach";
 
-const MenuScene: React.FC = () => {
+const MenuScene = () => {
   return (
     <>
       <MenuSceneAssets />

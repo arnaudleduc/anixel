@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import React from "react";
-import { useGLTF } from "@react-three/drei";
+import { Float, useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
@@ -165,7 +165,7 @@ const MenuSceneAssets: React.FC = () => {
         castShadow
         receiveShadow
         material={materials["Atlas.014"]}
-        position={[3.054, -0.14, 5.393]}
+        position={[3.054, 0.065, 7.393]}
       />
       <mesh
         geometry={nodes.Environment_Rock_2.geometry}
@@ -300,13 +300,20 @@ const MenuSceneAssets: React.FC = () => {
         material={materials["Atlas.031"]}
         position={[-7.092, 0, 7.815]}
       />
-      <mesh
-        geometry={nodes.Ship_Large.geometry}
-        castShadow
-        receiveShadow
-        material={materials["Atlas.037"]}
-        position={[1.426, 0.548, -5.574]}
-      />
+      <Float
+        speed={1}
+        rotationIntensity={0.3}
+        floatIntensity={0.5}
+        floatingRange={[-0.95, 0.05]}
+      >
+        <mesh
+          geometry={nodes.Ship_Large.geometry}
+          castShadow
+          receiveShadow
+          material={materials["Atlas.037"]}
+          position={[1.426, 0.548, -5.574]}
+        />
+      </Float>
       <mesh
         geometry={nodes.Ship_Small.geometry}
         castShadow

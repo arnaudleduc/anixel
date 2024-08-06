@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import React from "react";
 import { Sphere, useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import BeachWater from "../beachWater/BeachWater";
@@ -11,7 +10,7 @@ type GLTFResult = GLTF & {
   materials: unknown;
 };
 
-const MenuSceneBeach: React.FC = () => {
+const MenuSceneBeach = () => {
   const { nodes } = useGLTF("models/sceneMenu_Sand.glb") as GLTFResult;
   return (
     <>
