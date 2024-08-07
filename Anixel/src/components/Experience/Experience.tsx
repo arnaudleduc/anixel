@@ -5,6 +5,7 @@ import Lighting from "../lighting/Lighting";
 import { BakeShadows, Environment, SoftShadows } from "@react-three/drei";
 import { OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
+import Interface from "../interface/Interface";
 
 const Experience: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ const Experience: React.FC = () => {
 
         <MenuScene />
       </Canvas>
+      <Interface />
     </>
   );
 };
