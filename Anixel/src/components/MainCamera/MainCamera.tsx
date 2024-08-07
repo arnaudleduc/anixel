@@ -5,6 +5,7 @@ import { useFrame } from "@react-three/fiber";
 
 const MainCamera: React.FC = () => {
   const cameraGroup = useRef<THREE.Group<THREE.Object3DEventMap>>(null);
+  const cameraRef = useRef<THREE.PerspectiveCamera>(null);
 
   const cursor = useRef({ x: 0, y: 0 });
 
@@ -12,6 +13,10 @@ const MainCamera: React.FC = () => {
     cursor.current.x = event.clientX / window.innerWidth - 0.5;
     cursor.current.y = event.clientY / window.innerHeight - 0.5;
   };
+
+  useEffect(() => {
+    cameraRef.current?.lookAt(0, 1, 0);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("mousemove", mouseMove);
@@ -34,13 +39,14 @@ const MainCamera: React.FC = () => {
     }
   });
 
-  useEffect(() => {
-    console.log(cameraGroup.current);
-  });
-
   return (
     <group ref={cameraGroup}>
-      <PerspectiveCamera makeDefault position={[0, 3.6, 30]} fov={30} />
+      <PerspectiveCamera
+        ref={cameraRef}
+        makeDefault
+        position={[0, 3.6, 30]}
+        fov={30}
+      />
     </group>
   );
 };

@@ -8,7 +8,7 @@ export const vert = `
 
     vec3 p = point;
 
-    p.y += uTime * 2.0;
+    p.y += uTime * 1.2;
 
     gln_tFBMOpts fbmOpts = gln_tFBMOpts(1.0, 0.4, 2.3, 0.4, 1.0, 5, false, false);
 

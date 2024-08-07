@@ -4,14 +4,15 @@ import MainCamera from "../mainCamera/MainCamera";
 import Lighting from "../lighting/Lighting";
 import { BakeShadows, Environment, SoftShadows } from "@react-three/drei";
 import { OrbitControls } from "@react-three/drei";
+import { Perf } from "r3f-perf";
 
 const Experience: React.FC = () => {
   return (
     <>
       <Canvas shadows>
-        {/* <Perf /> */}
+        <Perf />
         {/* Scene configuration */}
-        <OrbitControls />
+        {/* <OrbitControls /> */}
 
         {/* <color attach="background" args={["#C5DBF0"]} /> */}
         <Environment
