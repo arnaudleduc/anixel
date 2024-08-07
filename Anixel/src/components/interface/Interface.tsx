@@ -2,18 +2,22 @@ import { Box, Flex } from "@mantine/core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeHigh, faVolumeOff } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
-import { ambienceSound } from "./constant/constants";
+import mainTheme from "../../assets/sounds/pirateAmbienceMusic.mp3";
+
+const audio = new Audio(mainTheme);
 
 const Interface: React.FC = () => {
-  const [soundIsOn, setSoundIsOn] = useState<boolean>(true);
+  const [soundIsOn, setSoundIsOn] = useState<boolean>(false);
 
   useEffect(() => {
     // if (experienceHasStarted) {
+    console.log("yes");
+
     if (soundIsOn) {
-      ambienceSound.play();
-      ambienceSound.loop = true;
+      audio.play();
+      audio.loop = true;
     } else {
-      ambienceSound.pause();
+      audio.pause();
     }
     // }
   }, [soundIsOn]);

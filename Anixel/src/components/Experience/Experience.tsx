@@ -6,10 +6,13 @@ import { BakeShadows, Environment, SoftShadows } from "@react-three/drei";
 import { OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import Interface from "../interface/Interface";
+import LoadingScreen from "../loadingScreen/LoadingScreen";
+import { Suspense } from "react";
 
 const Experience: React.FC = () => {
   return (
     <>
+      <LoadingScreen />
       <Canvas shadows>
         <Perf />
         {/* Scene configuration */}
@@ -30,7 +33,9 @@ const Experience: React.FC = () => {
 
         {/* Scene */}
 
-        <MenuScene />
+        <Suspense fallback={null}>
+          <MenuScene />
+        </Suspense>
       </Canvas>
       <Interface />
     </>
