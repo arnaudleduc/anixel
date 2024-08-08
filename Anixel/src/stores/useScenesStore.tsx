@@ -15,6 +15,12 @@ interface ScenesStore {
   setHomeIsActive: () => void;
   homeIsHovered: boolean;
   setHomeIsHovered: (v: boolean) => void;
+
+  socialsAreOpen: boolean;
+  setSocialsAreOpen: (v: boolean) => void;
+
+  helpIsOpen: boolean;
+  setHelpIsOpen: (v: boolean) => void;
 }
 
 const useScenesStore = create<ScenesStore>()((set) => ({
@@ -35,6 +41,12 @@ const useScenesStore = create<ScenesStore>()((set) => ({
     set((state) => ({ homeIsActive: !state.homeIsActive })),
   homeIsHovered: false,
   setHomeIsHovered: (v) => set(() => ({ homeIsHovered: v })),
+
+  socialsAreOpen: false,
+  setSocialsAreOpen: (v) => set(() => ({ socialsAreOpen: v })),
+
+  helpIsOpen: false,
+  setHelpIsOpen: (v) => set(() => ({ helpIsOpen: v })),
 }));
 
 export default useScenesStore;

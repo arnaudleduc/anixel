@@ -1,5 +1,10 @@
 {
   "shop": "Boutique",
   "play": "Jouer",
-  "home": "Maison"
+  "home": "Maison",
+
+  "socials": {
+    "creator": "Suivre le créateur",
+    "anixel": "Plus d'Anixel"
+  }
 }

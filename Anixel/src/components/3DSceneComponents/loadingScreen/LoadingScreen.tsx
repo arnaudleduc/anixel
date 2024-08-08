@@ -12,7 +12,14 @@ const LoadingScreen: React.FC = () => {
     >
       <div className="flex flex-col justify-center items-center font-snake">
         <div className="relative top-60 right-10 mt-20 animate-pulse">
-          <img src="/images/loadingScreenText_FINAL.png" className="w-96" />
+          <img
+            src={
+              navigator.language === "en"
+                ? "/images/loadingScreenTextEN_FINAL.png"
+                : "/images/loadingScreenTextFR_FINAL.png"
+            }
+            className="w-96"
+          />
         </div>
       </div>
     </div>

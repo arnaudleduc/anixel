@@ -1,5 +1,10 @@
 {
   "shop": "Shop",
   "play": "Play",
-  "home": "Home"
+  "home": "Home",
+
+  "socials": {
+    "creator": "Follow Anixel' s creator",
+    "anixel": "More Anixel"
+  }
 }
