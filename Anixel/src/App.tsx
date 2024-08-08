@@ -1,5 +1,3 @@
-import "@mantine/core/styles.css";
-
 import Experience from "./components/experience/Experience";
 
 function App() {

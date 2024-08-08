@@ -8,6 +8,7 @@ import {
   Selection,
   Select,
 } from "@react-three/postprocessing";
+import useScenesStore from "../../stores/useScenesStore";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -35,18 +36,24 @@ const MenuInteractiveAssets: React.FC = () => {
   const [boatIsHovered, setBoatIsHovered] = useState<boolean>(false);
   const [homeIsHovered, setHomeIsHovered] = useState<boolean>(false);
 
+  const { setShopIsActive, setBoatIsActive, setHomeIsActive } =
+    useScenesStore();
+
   useCursor(shopIsHovered || boatIsHovered || homeIsHovered);
 
   const handleOnShopClick = () => {
+    setShopIsActive();
     console.log("yohoho, shop");
   };
 
   const handleOnBoatClick = () => {
     console.log("yihihi, boat");
+    setBoatIsActive();
   };
 
   const handleOnHomeClick = () => {
     console.log("yihihi, home");
+    setHomeIsActive();
   };
 
   return (
