@@ -27,7 +27,7 @@ const Experience: React.FC = () => {
           environmentIntensity={0.1}
         />
         <SoftShadows />
-        <BakeShadows />
+        {/* <BakeShadows /> */}
         <MainCamera />
         <Lighting />
 

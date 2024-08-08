@@ -16,7 +16,7 @@ const Lighting: React.FC = () => {
       />
       <directionalLight
         intensity={2}
-        color={"yellow"}
+        color={"orange"}
         castShadow
         position={[0, 25, -130]}
         shadow-mapSize={[2048, 2048]}

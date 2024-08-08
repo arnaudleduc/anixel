@@ -44,7 +44,7 @@ const MainCamera: React.FC = () => {
       <PerspectiveCamera
         ref={cameraRef}
         makeDefault
-        position={[0, 3.6, 30]}
+        position={[0, 3.6, 28]}
         fov={30}
       />
     </group>

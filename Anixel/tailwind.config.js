@@ -3,7 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      snake: ["SNAKE", "sans-serif"],
+      snake: ["snake", "sans-serif"],
     },
     extend: {
       keyframes: {
