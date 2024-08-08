@@ -6,10 +6,13 @@ import useScenesStore from "../../../stores/useScenesStore";
 import Shop from "../shop/Shop";
 import Home from "../home/Home";
 import Boat from "../boat/Boat";
+import { useTranslation } from "react-i18next";
 
 const audio = new Audio(mainTheme);
 
 const Interface: React.FC = () => {
+  const { t } = useTranslation();
+
   const [soundIsOn, setSoundIsOn] = useState<boolean>(false);
 
   const {
@@ -55,9 +58,9 @@ const Interface: React.FC = () => {
       {(shopIsHovered || boatIsHovered || homeIsHovered) && (
         <div className="fixed top-0 left-0 w-full h-screen flex justify-center items-center pointer-events-none">
           <div className="relative top-60 font-snake uppercase px-6 py-6 bg-yellow-100 shadow-xl rounded-xl pointer-events-none text-center tracking-widest text-amber-950 text-2xl">
-            {shopIsHovered && "Boutique"}
-            {boatIsHovered && "Jouer"}
-            {homeIsHovered && "Maison"}
+            {shopIsHovered && t("shop")}
+            {boatIsHovered && t("play")}
+            {homeIsHovered && t("home")}
           </div>
         </div>
       )}
