@@ -1,4 +1,4 @@
-import Experience from "./components/experience/Experience";
+import Experience from "./components/3DSceneComponents/experience/Experience";
 
 function App() {
   return <Experience />;

@@ -5,7 +5,7 @@ const LoadingScreen: React.FC = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 p-16 w-full h-screen z-10 grid place-items-center bg-[url('images/loadingScreen_FINAL.jpg')] ${
+      className={`fixed top-0 left-0 p-16 w-full h-screen z-10 grid place-items-center bg-center bg-[url('images/loadingScreen_FINAL.jpg')] ${
         active ? "" : "animate-fadeOut"
         // active ? "" : ""
       }`}

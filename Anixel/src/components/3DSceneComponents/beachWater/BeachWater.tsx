@@ -4,7 +4,7 @@ import CustomShaderMaterialType from "three-custom-shader-material/vanilla";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 
-import * as beachWater from "../../shaders/beachWater/beachWater";
+import * as beachWater from "../../../shaders/beachWater/beachWater";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { patchShaders } from "gl-noise/build/glNoise.m";

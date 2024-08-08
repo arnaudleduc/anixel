@@ -33,7 +33,7 @@ const MenuSceneBeach = () => {
         <Clouds material={THREE.MeshBasicMaterial} position={[0, -1, -20]}>
           <Cloud
             segments={150}
-            bounds={[30, 1, 18]}
+            bounds={[30, 1, 13]}
             volume={15}
             color="#817499"
             opacity={0.3}

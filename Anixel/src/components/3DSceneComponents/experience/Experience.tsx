@@ -5,7 +5,7 @@ import Lighting from "../lighting/Lighting";
 import { BakeShadows, Environment, SoftShadows } from "@react-three/drei";
 import { OrbitControls } from "@react-three/drei";
 import { Perf } from "r3f-perf";
-import Interface from "../interface/Interface";
+import Interface from "../../gameComponents/interface/Interface";
 import LoadingScreen from "../loadingScreen/LoadingScreen";
 import { Suspense } from "react";
 
