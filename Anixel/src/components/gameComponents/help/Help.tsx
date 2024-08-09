@@ -11,11 +11,11 @@ const Help: React.FC = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen flex justify-center">
-      <div className="rounded-2xl bg-white h-5/6 m-12 p-10 w-1/2">
+      <div className="rounded-2xl bg-yellow-100 h-5/6 m-12 p-10 w-1/2">
         <FontAwesomeIcon
           icon={faXmark}
           size="2xl"
-          className="cursor-pointer"
+          className="cursor-pointer hover:animate-ping"
           onClick={() => setHelpIsOpen(false)}
         />
         <h2 className="text-center text-2xl font-snake uppercase mt-12">

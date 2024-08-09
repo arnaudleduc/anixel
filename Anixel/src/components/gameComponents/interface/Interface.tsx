@@ -15,6 +15,10 @@ import { useTranslation } from "react-i18next";
 import { buttonsList } from "./constants/buttons";
 import Socials from "../socials/Socials";
 import Help from "../help/Help";
+import Mountain from "../levels/mountain/Mountain";
+import Ocean from "../levels/ocean/Ocean";
+import Jungle from "../levels/jungle/Jungle";
+import Savannah from "../levels/savannah/Savannah";
 
 const audio = new Audio(mainTheme);
 
@@ -34,6 +38,10 @@ const Interface: React.FC = () => {
     setSocialsAreOpen,
     helpIsOpen,
     setHelpIsOpen,
+    levelMountainIsLaunched,
+    levelOceanIsLaunched,
+    levelJungleIsLaunched,
+    levelSavannahIsLaunched,
   } = useScenesStore();
 
   useEffect(() => {
@@ -52,7 +60,7 @@ const Interface: React.FC = () => {
     <>
       {/* Bottom right interface's parameters */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
-        <div className="flex absolute bottom-4 right-4 bg-[#fff9a6] rounded-lg px-12 py-4">
+        <div className="flex absolute bottom-4 right-4 bg-yellow-100 rounded-lg px-12 py-4">
           <button
             className="pointer-events-auto cursor-pointer mr-12"
             onClick={() => setSoundIsOn(!soundIsOn)}
@@ -130,6 +138,12 @@ const Interface: React.FC = () => {
       {homeIsActive && <Home />}
       {socialsAreOpen && <Socials />}
       {helpIsOpen && <Help />}
+
+      {/* Levels display */}
+      {levelMountainIsLaunched && <Mountain />}
+      {levelOceanIsLaunched && <Ocean />}
+      {levelJungleIsLaunched && <Jungle />}
+      {levelSavannahIsLaunched && <Savannah />}
     </>
   );
 };

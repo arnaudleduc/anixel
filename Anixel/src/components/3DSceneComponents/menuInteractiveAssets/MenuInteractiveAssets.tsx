@@ -46,18 +46,15 @@ const MenuInteractiveAssets: React.FC = () => {
   useCursor(shopIsHovered || boatIsHovered || homeIsHovered);
 
   const handleOnShopClick = () => {
-    setShopIsActive();
-    console.log("yohoho, shop");
+    setShopIsActive(true);
   };
 
   const handleOnBoatClick = () => {
-    console.log("yihihi, boat");
-    setBoatIsActive();
+    setBoatIsActive(true);
   };
 
   const handleOnHomeClick = () => {
-    console.log("yihihi, home");
-    setHomeIsActive();
+    setHomeIsActive(true);
   };
 
   return (

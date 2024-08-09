@@ -2,17 +2,17 @@ import { create } from "zustand";
 
 interface ScenesStore {
   shopIsActive: boolean;
-  setShopIsActive: () => void;
+  setShopIsActive: (v: boolean) => void;
   shopIsHovered: boolean;
   setShopIsHovered: (v: boolean) => void;
 
   boatIsActive: boolean;
-  setBoatIsActive: () => void;
+  setBoatIsActive: (v: boolean) => void;
   boatIsHovered: boolean;
   setBoatIsHovered: (v: boolean) => void;
 
   homeIsActive: boolean;
-  setHomeIsActive: () => void;
+  setHomeIsActive: (v: boolean) => void;
   homeIsHovered: boolean;
   setHomeIsHovered: (v: boolean) => void;
 
@@ -21,24 +21,41 @@ interface ScenesStore {
 
   helpIsOpen: boolean;
   setHelpIsOpen: (v: boolean) => void;
+
+  levelMountainIsLaunched: boolean;
+  setLevelMountainIsLaunched: (v: boolean) => void;
+
+  levelOceanIsLaunched: boolean;
+  setLevelOceanIsLaunched: (v: boolean) => void;
+
+  levelJungleIsLaunched: boolean;
+  setLevelJungleIsLaunched: (v: boolean) => void;
+
+  levelSavannahIsLaunched: boolean;
+  setLevelSavannahIsLaunched: (v: boolean) => void;
+
+  showAreYouSureMessage: boolean;
+  setShowAreYouSureMessage: (v: boolean) => void;
+
+  gridRowArray: number[];
+  setGridRowArray: (v: number[]) => void;
+  gridColArray: number[];
+  setGridColArray: (v: number[]) => void;
 }
 
 const useScenesStore = create<ScenesStore>()((set) => ({
   shopIsActive: false,
-  setShopIsActive: () =>
-    set((state) => ({ shopIsActive: !state.shopIsActive })),
+  setShopIsActive: (v) => set(() => ({ shopIsActive: v })),
   shopIsHovered: false,
   setShopIsHovered: (v) => set(() => ({ shopIsHovered: v })),
 
   boatIsActive: false,
-  setBoatIsActive: () =>
-    set((state) => ({ boatIsActive: !state.boatIsActive })),
+  setBoatIsActive: (v) => set(() => ({ boatIsActive: v })),
   boatIsHovered: false,
   setBoatIsHovered: (v) => set(() => ({ boatIsHovered: v })),
 
   homeIsActive: false,
-  setHomeIsActive: () =>
-    set((state) => ({ homeIsActive: !state.homeIsActive })),
+  setHomeIsActive: (v) => set(() => ({ homeIsActive: v })),
   homeIsHovered: false,
   setHomeIsHovered: (v) => set(() => ({ homeIsHovered: v })),
 
@@ -47,6 +64,29 @@ const useScenesStore = create<ScenesStore>()((set) => ({
 
   helpIsOpen: false,
   setHelpIsOpen: (v) => set(() => ({ helpIsOpen: v })),
+
+  levelMountainIsLaunched: false,
+  setLevelMountainIsLaunched: (v) =>
+    set(() => ({ levelMountainIsLaunched: v })),
+
+  levelOceanIsLaunched: false,
+  setLevelOceanIsLaunched: (v) => set(() => ({ levelOceanIsLaunched: v })),
+
+  levelJungleIsLaunched: false,
+  setLevelJungleIsLaunched: (v) => set(() => ({ levelJungleIsLaunched: v })),
+
+  levelSavannahIsLaunched: false,
+  setLevelSavannahIsLaunched: (v) =>
+    set(() => ({ levelSavannahIsLaunched: v })),
+
+  showAreYouSureMessage: false,
+  setShowAreYouSureMessage: (v) => set(() => ({ showAreYouSureMessage: v })),
+
+  gridRowArray: [],
+  setGridRowArray: (v) => set(() => ({ gridRowArray: v })),
+
+  gridColArray: [],
+  setGridColArray: (v) => set(() => ({ gridColArray: v })),
 }));
 
 export default useScenesStore;
