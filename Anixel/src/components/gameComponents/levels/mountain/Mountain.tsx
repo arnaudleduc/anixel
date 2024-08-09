@@ -2,23 +2,12 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../../stores/useScenesStore";
 import AreYouSure from "../../areYouSure/AreYouSure";
-import { GRID_ROW, GRID_COL } from "../constants/constants";
-import { useEffect } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import LayerGenerator from "../layers/LayerGenerator";
 
 const Mountain: React.FC = () => {
-  const {
-    showAreYouSureMessage,
-    setShowAreYouSureMessage,
-    gridRowArray,
-    setGridRowArray,
-    gridColArray,
-    setGridColArray,
-  } = useScenesStore();
-
-  useEffect(() => {
-    setGridRowArray(Array.from(Array(GRID_ROW).keys()));
-    setGridColArray(Array.from(Array(GRID_COL).keys()));
-  }, []);
+  const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore();
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen">
@@ -29,25 +18,13 @@ const Mountain: React.FC = () => {
           onClick={() => setShowAreYouSureMessage(true)}
           className="cursor-pointer hover:animate-ping"
         />
+        <Canvas>
+          {/* Scene configuration */}
+          <OrbitControls />
 
-        <div className="flex flex-col items-center justify-center m-auto h-[96%] w-1/2">
-          {gridColArray.map((_row, rowIndex) => {
-            return (
-              <div className="flex w-full h-full">
-                <div className="bg-black h-full w-full hover:bg-white hover:cursor-grab">
-                  {rowIndex}
-                </div>
-                {gridRowArray.map((_col, colIndex) => {
-                  return (
-                    <div className="bg-black h-full w-full hover:bg-white hover:cursor-grab">
-                      {colIndex}
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
-        </div>
+          {/* Game */}
+          <LayerGenerator />
+        </Canvas>
       </div>
 
       {showAreYouSureMessage && <AreYouSure level="mountain" />}
