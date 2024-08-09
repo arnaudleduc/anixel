@@ -45,7 +45,6 @@ const Interface: React.FC = () => {
   } = useScenesStore();
 
   useEffect(() => {
-    // if (experienceHasStarted) {
     if (soundIsOn) {
       audio.volume = 0.2;
       audio.play();
@@ -53,7 +52,6 @@ const Interface: React.FC = () => {
     } else if (!soundIsOn) {
       audio.pause();
     }
-    // }
   }, [soundIsOn]);
 
   return (

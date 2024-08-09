@@ -5,6 +5,7 @@ import AreYouSure from "../../areYouSure/AreYouSure";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import LayerGenerator from "../layers/LayerGenerator";
+import GameCamera from "../../gameCamera/GameCamera";
 
 const Mountain: React.FC = () => {
   const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore();
@@ -21,7 +22,7 @@ const Mountain: React.FC = () => {
         <Canvas>
           {/* Scene configuration */}
           <OrbitControls />
-
+          <GameCamera />
           {/* Game */}
           <LayerGenerator />
         </Canvas>

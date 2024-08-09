@@ -54,23 +54,8 @@ const LayerGenerator: React.FC = () => {
     setGridColArray(Array.from(Array(GRID_COL).keys()));
   }, []);
 
-  // useEffect(() => {
-  //   if (caseRef.current) {
-  //     gridRowArray.forEach((_row, rowIndex) => {
-  //       gridColArray.forEach((_case, colIndex) => {
-  //         console.log(
-  //           "Case",
-  //           rowIndex,
-  //           colIndex,
-  //           caseRef.current?.[`case-${rowIndex}/${colIndex}`]
-  //         );
-  //       });
-  //     });
-  //   }
-  // }, [gridRowArray, gridColArray]);
-
   return (
-    <>
+    <group position={[0.5, 0.5, 0]}>
       {gridRowArray.map((_row, rowIndex) => {
         return (
           <group key={`row-${rowIndex + 1}`}>
@@ -78,8 +63,6 @@ const LayerGenerator: React.FC = () => {
               const randTextureIndex = Math.floor(
                 Math.random() * casesTextures.length
               );
-
-              console.log(randTextureIndex);
 
               return (
                 <Plane
@@ -101,7 +84,7 @@ const LayerGenerator: React.FC = () => {
           </group>
         );
       })}
-    </>
+    </group>
   );
 };
 
