@@ -2,9 +2,17 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../../stores/useScenesStore";
 import AreYouSure from "../../areYouSure/AreYouSure";
+import { useShallow } from "zustand/react/shallow";
 
 const Jungle: React.FC = () => {
-  const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore();
+  const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore(
+    useShallow((state) => {
+      return {
+        showAreYouSureMessage: state.showAreYouSureMessage,
+        setShowAreYouSureMessage: state.setShowAreYouSureMessage,
+      };
+    })
+  );
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen">

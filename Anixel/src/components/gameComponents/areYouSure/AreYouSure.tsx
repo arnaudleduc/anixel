@@ -2,6 +2,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../stores/useScenesStore";
 import { useTranslation } from "react-i18next";
+import { useShallow } from "zustand/react/shallow";
 
 interface AreYouSureProps {
   level: string;
@@ -14,7 +15,17 @@ const AreYouSure: React.FC<AreYouSureProps> = ({ level }) => {
     setLevelJungleIsLaunched,
     setLevelSavannahIsLaunched,
     setShowAreYouSureMessage,
-  } = useScenesStore();
+  } = useScenesStore(
+    useShallow((state) => {
+      return {
+        setLevelMountainIsLaunched: state.setLevelMountainIsLaunched,
+        setLevelOceanIsLaunched: state.setLevelOceanIsLaunched,
+        setLevelJungleIsLaunched: state.setLevelJungleIsLaunched,
+        setLevelSavannahIsLaunched: state.setLevelSavannahIsLaunched,
+        setShowAreYouSureMessage: state.setShowAreYouSureMessage,
+      };
+    })
+  );
 
   const { t } = useTranslation();
 

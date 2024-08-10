@@ -2,6 +2,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../stores/useScenesStore";
 import { useTranslation } from "react-i18next";
+import { useShallow } from "zustand/react/shallow";
 
 interface Level {
   name: string;
@@ -17,7 +18,17 @@ const Boat: React.FC = () => {
     setLevelOceanIsLaunched,
     setLevelJungleIsLaunched,
     setLevelSavannahIsLaunched,
-  } = useScenesStore();
+  } = useScenesStore(
+    useShallow((state) => {
+      return {
+        setBoatIsActive: state.setBoatIsActive,
+        setLevelMountainIsLaunched: state.setLevelMountainIsLaunched,
+        setLevelOceanIsLaunched: state.setLevelOceanIsLaunched,
+        setLevelJungleIsLaunched: state.setLevelJungleIsLaunched,
+        setLevelSavannahIsLaunched: state.setLevelSavannahIsLaunched,
+      };
+    })
+  );
 
   const handleMountainClick: () => void = () => {
     setBoatIsActive(false);

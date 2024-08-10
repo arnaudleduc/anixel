@@ -3,11 +3,16 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../stores/useScenesStore";
 import { useTranslation } from "react-i18next";
+import { useShallow } from "zustand/react/shallow";
 
 const Help: React.FC = () => {
   const { t } = useTranslation();
 
-  const { setHelpIsOpen } = useScenesStore();
+  const { setHelpIsOpen } = useScenesStore(
+    useShallow((state) => {
+      return { setHelpIsOpen: state.setHelpIsOpen };
+    })
+  );
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen flex justify-center">

@@ -1,9 +1,16 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../stores/useScenesStore";
+import { useShallow } from "zustand/react/shallow";
 
 const Shop: React.FC = () => {
-  const { setShopIsActive } = useScenesStore();
+  const { setShopIsActive } = useScenesStore(
+    useShallow((state) => {
+      return {
+        setShopIsActive: state.setShopIsActive,
+      };
+    })
+  );
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen">

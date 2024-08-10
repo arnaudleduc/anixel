@@ -19,6 +19,7 @@ import Mountain from "../levels/mountain/Mountain";
 import Ocean from "../levels/ocean/Ocean";
 import Jungle from "../levels/jungle/Jungle";
 import Savannah from "../levels/savannah/Savannah";
+import { useShallow } from "zustand/react/shallow";
 
 const audio = new Audio(mainTheme);
 
@@ -42,7 +43,26 @@ const Interface: React.FC = () => {
     levelOceanIsLaunched,
     levelJungleIsLaunched,
     levelSavannahIsLaunched,
-  } = useScenesStore();
+  } = useScenesStore(
+    useShallow((state) => {
+      return {
+        shopIsActive: state.shopIsActive,
+        shopIsHovered: state.shopIsHovered,
+        boatIsActive: state.boatIsActive,
+        boatIsHovered: state.boatIsHovered,
+        homeIsActive: state.homeIsActive,
+        homeIsHovered: state.homeIsHovered,
+        socialsAreOpen: state.socialsAreOpen,
+        setSocialsAreOpen: state.setSocialsAreOpen,
+        helpIsOpen: state.helpIsOpen,
+        setHelpIsOpen: state.setHelpIsOpen,
+        levelMountainIsLaunched: state.levelMountainIsLaunched,
+        levelOceanIsLaunched: state.levelOceanIsLaunched,
+        levelJungleIsLaunched: state.levelJungleIsLaunched,
+        levelSavannahIsLaunched: state.levelSavannahIsLaunched,
+      };
+    })
+  );
 
   useEffect(() => {
     if (soundIsOn) {

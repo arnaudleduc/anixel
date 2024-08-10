@@ -8,6 +8,7 @@ import {
   Select,
 } from "@react-three/postprocessing";
 import useScenesStore from "../../../stores/useScenesStore";
+import { useShallow } from "zustand/react/shallow";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -41,7 +42,21 @@ const MenuInteractiveAssets: React.FC = () => {
     setHomeIsActive,
     homeIsHovered,
     setHomeIsHovered,
-  } = useScenesStore();
+  } = useScenesStore(
+    useShallow((state) => {
+      return {
+        setShopIsActive: state.setShopIsActive,
+        shopIsHovered: state.shopIsHovered,
+        setShopIsHovered: state.setShopIsHovered,
+        setBoatIsActive: state.setBoatIsActive,
+        boatIsHovered: state.boatIsHovered,
+        setBoatIsHovered: state.setBoatIsHovered,
+        setHomeIsActive: state.setHomeIsActive,
+        homeIsHovered: state.homeIsHovered,
+        setHomeIsHovered: state.setHomeIsHovered,
+      };
+    })
+  );
 
   useCursor(shopIsHovered || boatIsHovered || homeIsHovered);
 

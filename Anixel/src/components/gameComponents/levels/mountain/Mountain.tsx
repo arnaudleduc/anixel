@@ -1,14 +1,20 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../../stores/useScenesStore";
+import { useShallow } from "zustand/react/shallow";
 import AreYouSure from "../../areYouSure/AreYouSure";
+import GameCanvas from "../../gameCanvas/GameCanvas";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import LayerGenerator from "../layers/LayerGenerator";
-import GameCamera from "../../gameCamera/GameCamera";
 
 const Mountain: React.FC = () => {
-  const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore();
+  const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore(
+    useShallow((state) => {
+      return {
+        showAreYouSureMessage: state.showAreYouSureMessage,
+        setShowAreYouSureMessage: state.setShowAreYouSureMessage,
+      };
+    })
+  );
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen">
@@ -20,11 +26,7 @@ const Mountain: React.FC = () => {
           className="cursor-pointer hover:animate-ping"
         />
         <Canvas>
-          {/* Scene configuration */}
-          <OrbitControls />
-          <GameCamera />
-          {/* Game */}
-          <LayerGenerator />
+          <GameCanvas level="mountain" />
         </Canvas>
       </div>
 

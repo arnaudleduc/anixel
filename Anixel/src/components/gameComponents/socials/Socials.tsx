@@ -2,12 +2,19 @@ import { faXmark, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../stores/useScenesStore";
+import { useShallow } from "zustand/react/shallow";
 import { useTranslation } from "react-i18next";
 
 const Socials: React.FC = () => {
   const { t } = useTranslation();
 
-  const { setSocialsAreOpen } = useScenesStore();
+  const { setSocialsAreOpen } = useScenesStore(
+    useShallow((state) => {
+      return {
+        setSocialsAreOpen: state.setSocialsAreOpen,
+      };
+    })
+  );
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen flex justify-center">
