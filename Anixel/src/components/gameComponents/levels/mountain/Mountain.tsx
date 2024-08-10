@@ -25,7 +25,7 @@ const Mountain: React.FC = () => {
           onClick={() => setShowAreYouSureMessage(true)}
           className="cursor-pointer hover:animate-ping"
         />
-        <Canvas>
+        <Canvas style={{ width: "100%", height: "95%" }}>
           <GameCanvas level="mountain" />
         </Canvas>
       </div>

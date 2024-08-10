@@ -8,7 +8,7 @@ const GameCamera: React.FC = () => {
   return (
     <OrthographicCamera
       ref={gameCamera}
-      position={[0, 0, 2]}
+      position={[0, 0, 10]}
       makeDefault
       zoom={60}
     />

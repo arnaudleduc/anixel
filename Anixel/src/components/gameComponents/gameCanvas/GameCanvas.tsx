@@ -1,7 +1,7 @@
-import GameCamera from "../gameCamera/GameCamera";
 import LayerGenerator from "../levels/layers/LayerGenerator";
 import { Texture } from "three";
 import { OrbitControls, useTexture } from "@react-three/drei";
+import GameCamera from "../gameCamera/GameCamera";
 
 export interface GameCanvasProps {
   level: string;
@@ -46,10 +46,13 @@ const GameCanvas: React.FC<GameCanvasProps> = ({ level }) => {
           transparent
         />
       </mesh>
-      <OrbitControls />
-      {/* <GameCamera /> */}
+      {/* <OrbitControls /> */}
+      <GameCamera />
       {/* Game */}
-      <LayerGenerator />
+      <LayerGenerator layer={0} />
+      <LayerGenerator layer={1} />
+      <LayerGenerator layer={2} />
+      <LayerGenerator layer={3} />
     </>
   );
 };

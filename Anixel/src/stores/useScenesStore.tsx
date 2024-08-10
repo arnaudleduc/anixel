@@ -36,11 +36,6 @@ interface ScenesStore {
 
   showAreYouSureMessage: boolean;
   setShowAreYouSureMessage: (v: boolean) => void;
-
-  gridRowArray: number[];
-  setGridRowArray: (v: number[]) => void;
-  gridColArray: number[];
-  setGridColArray: (v: number[]) => void;
 }
 
 const useScenesStore = create<ScenesStore>()((set) => ({
@@ -81,12 +76,6 @@ const useScenesStore = create<ScenesStore>()((set) => ({
 
   showAreYouSureMessage: false,
   setShowAreYouSureMessage: (v) => set(() => ({ showAreYouSureMessage: v })),
-
-  gridRowArray: [],
-  setGridRowArray: (v) => set(() => ({ gridRowArray: v })),
-
-  gridColArray: [],
-  setGridColArray: (v) => set(() => ({ gridColArray: v })),
 }));
 
 export default useScenesStore;
