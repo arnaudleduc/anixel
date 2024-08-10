@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../../stores/useScenesStore";
 import { useShallow } from "zustand/react/shallow";
 import AreYouSure from "../../areYouSure/AreYouSure";
+import { Canvas } from "@react-three/fiber";
+import GameCanvas from "../../gameCanvas/GameCanvas";
 
 const Savannah: React.FC = () => {
   const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore(
@@ -23,7 +25,9 @@ const Savannah: React.FC = () => {
           onClick={() => setShowAreYouSureMessage(true)}
           className="cursor-pointer hover:animate-ping"
         />
-        Lassavanne
+        <Canvas style={{ width: "100%", height: "95%" }}>
+          <GameCanvas level="savannah" />
+        </Canvas>
       </div>
       {showAreYouSureMessage && <AreYouSure level="savannah" />}
     </div>

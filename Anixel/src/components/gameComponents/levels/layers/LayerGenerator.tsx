@@ -11,10 +11,11 @@ export interface Positions {
 }
 
 export interface LayerGeneratorProps {
+  level: string;
   layer: number;
 }
 
-const LayerGenerator: React.FC<LayerGeneratorProps> = ({ layer }) => {
+const LayerGenerator: React.FC<LayerGeneratorProps> = ({ level, layer }) => {
   const [hovered, setHovered] = useState<boolean>(false);
 
   useCursor(hovered, "pointer");
@@ -23,20 +24,16 @@ const LayerGenerator: React.FC<LayerGeneratorProps> = ({ layer }) => {
 
   const [c1_1, c1_2, c1_3, c2_1, c2_2, c2_3, c3_1, c3_2, c3_3]: Texture[] =
     useTexture([
-      "images/cases/mountain/C1_1.png",
-      "images/cases/mountain/C1_2.png",
-      "images/cases/mountain/C1_3.png",
-      "images/cases/mountain/C2_1.png",
-      "images/cases/mountain/C2_2.png",
-      "images/cases/mountain/C2_3.png",
-      "images/cases/mountain/C3_1.png",
-      "images/cases/mountain/C3_2.png",
-      "images/cases/mountain/C3_3.png",
+      `images/cases/${level}/C1_1.png`,
+      `images/cases/${level}/C1_2.png`,
+      `images/cases/${level}/C1_3.png`,
+      `images/cases/${level}/C2_1.png`,
+      `images/cases/${level}/C2_2.png`,
+      `images/cases/${level}/C2_3.png`,
+      `images/cases/${level}/C3_1.png`,
+      `images/cases/${level}/C3_2.png`,
+      `images/cases/${level}/C3_3.png`,
     ]);
-
-  // const casesTextures = useMemo(() => [c1_1, c1_2, c1_3, c2_1, c2_2, c2_3, c3_1, c3_2, c3_3],
-  //   []
-  // );
 
   const casesTextures = useMemo<{ [key: string]: Texture[] }>(
     () => ({

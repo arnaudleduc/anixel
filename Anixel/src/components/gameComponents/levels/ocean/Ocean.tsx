@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../../stores/useScenesStore";
 import { useShallow } from "zustand/react/shallow";
 import AreYouSure from "../../areYouSure/AreYouSure";
+import { Canvas } from "@react-three/fiber";
+import GameCanvas from "../../gameCanvas/GameCanvas";
 
 const Ocean: React.FC = () => {
   const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore(
@@ -23,7 +25,9 @@ const Ocean: React.FC = () => {
           onClick={() => setShowAreYouSureMessage(true)}
           className="cursor-pointer hover:animate-ping"
         />
-        L'océan
+        <Canvas style={{ width: "100%", height: "95%" }}>
+          <GameCanvas level="ocean" />
+        </Canvas>
       </div>
       {showAreYouSureMessage && <AreYouSure level="ocean" />}
     </div>

@@ -49,10 +49,10 @@ const GameCanvas: React.FC<GameCanvasProps> = ({ level }) => {
       {/* <OrbitControls /> */}
       <GameCamera />
       {/* Game */}
-      <LayerGenerator layer={0} />
-      <LayerGenerator layer={1} />
-      <LayerGenerator layer={2} />
-      <LayerGenerator layer={3} />
+      <LayerGenerator level={level} layer={0} />
+      <LayerGenerator level={level} layer={1} />
+      <LayerGenerator level={level} layer={2} />
+      <LayerGenerator level={level} layer={3} />
     </>
   );
 };

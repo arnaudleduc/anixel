@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useScenesStore from "../../../../stores/useScenesStore";
 import AreYouSure from "../../areYouSure/AreYouSure";
 import { useShallow } from "zustand/react/shallow";
+import { Canvas } from "@react-three/fiber";
+import GameCanvas from "../../gameCanvas/GameCanvas";
 
 const Jungle: React.FC = () => {
   const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore(
@@ -23,7 +25,9 @@ const Jungle: React.FC = () => {
           onClick={() => setShowAreYouSureMessage(true)}
           className="cursor-pointer hover:animate-ping"
         />
-        la jungle
+        <Canvas style={{ width: "100%", height: "95%" }}>
+          <GameCanvas level="jungle" />
+        </Canvas>
       </div>
       {showAreYouSureMessage && <AreYouSure level="jungle" />}
     </div>
