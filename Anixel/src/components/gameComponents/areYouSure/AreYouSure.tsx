@@ -4,45 +4,24 @@ import useScenesStore from "../../../stores/useScenesStore";
 import { useTranslation } from "react-i18next";
 import { useShallow } from "zustand/react/shallow";
 
-interface AreYouSureProps {
-  level: string;
-}
-
-const AreYouSure: React.FC<AreYouSureProps> = ({ level }) => {
-  const {
-    setLevelMountainIsLaunched,
-    setLevelOceanIsLaunched,
-    setLevelJungleIsLaunched,
-    setLevelSavannahIsLaunched,
-    setShowAreYouSureMessage,
-  } = useScenesStore(
-    useShallow((state) => {
-      return {
-        setLevelMountainIsLaunched: state.setLevelMountainIsLaunched,
-        setLevelOceanIsLaunched: state.setLevelOceanIsLaunched,
-        setLevelJungleIsLaunched: state.setLevelJungleIsLaunched,
-        setLevelSavannahIsLaunched: state.setLevelSavannahIsLaunched,
-        setShowAreYouSureMessage: state.setShowAreYouSureMessage,
-      };
-    })
-  );
+const AreYouSure: React.FC = () => {
+  const { setShowAreYouSureMessage, setGameIsLaunched, setSelectedStage } =
+    useScenesStore(
+      useShallow((state) => {
+        return {
+          setShowAreYouSureMessage: state.setShowAreYouSureMessage,
+          setGameIsLaunched: state.setGameIsLaunched,
+          setSelectedStage: state.setSelectedStage,
+        };
+      })
+    );
 
   const { t } = useTranslation();
 
-  const handleLeavingLevel: () => void = () => {
+  const handleClickOnConfirmButton: () => void = () => {
+    setGameIsLaunched(false);
     setShowAreYouSureMessage(false);
-    if (level === "mountain") {
-      setLevelMountainIsLaunched(false);
-    }
-    if (level === "ocean") {
-      setLevelOceanIsLaunched(false);
-    }
-    if (level === "jungle") {
-      setLevelJungleIsLaunched(false);
-    }
-    if (level === "savannah") {
-      setLevelSavannahIsLaunched(false);
-    }
+    setSelectedStage("");
   };
 
   return (
@@ -63,7 +42,7 @@ const AreYouSure: React.FC<AreYouSureProps> = ({ level }) => {
         <div className="flex flex-row items-center justify-evenly font-snake">
           <button
             className="uppercase bg-green-500 rounded-md px-3 py-3 hover:shadow-xl hover:cursor-pointer hover:text-white"
-            onClick={handleLeavingLevel}
+            onClick={handleClickOnConfirmButton}
           >
             {t("areYouSure.confirm")}
           </button>

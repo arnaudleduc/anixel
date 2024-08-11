@@ -15,11 +15,8 @@ import { useTranslation } from "react-i18next";
 import { buttonsList } from "./constants/buttons";
 import Socials from "../socials/Socials";
 import Help from "../help/Help";
-import Mountain from "../levels/mountain/Mountain";
-import Ocean from "../levels/ocean/Ocean";
-import Jungle from "../levels/jungle/Jungle";
-import Savannah from "../levels/savannah/Savannah";
 import { useShallow } from "zustand/react/shallow";
+import Stage from "../stages/stage/Stage";
 
 const audio = new Audio(mainTheme);
 
@@ -39,10 +36,7 @@ const Interface: React.FC = () => {
     setSocialsAreOpen,
     helpIsOpen,
     setHelpIsOpen,
-    levelMountainIsLaunched,
-    levelOceanIsLaunched,
-    levelJungleIsLaunched,
-    levelSavannahIsLaunched,
+    gameIsLaunched,
   } = useScenesStore(
     useShallow((state) => {
       return {
@@ -56,10 +50,7 @@ const Interface: React.FC = () => {
         setSocialsAreOpen: state.setSocialsAreOpen,
         helpIsOpen: state.helpIsOpen,
         setHelpIsOpen: state.setHelpIsOpen,
-        levelMountainIsLaunched: state.levelMountainIsLaunched,
-        levelOceanIsLaunched: state.levelOceanIsLaunched,
-        levelJungleIsLaunched: state.levelJungleIsLaunched,
-        levelSavannahIsLaunched: state.levelSavannahIsLaunched,
+        gameIsLaunched: state.gameIsLaunched,
       };
     })
   );
@@ -157,11 +148,8 @@ const Interface: React.FC = () => {
       {socialsAreOpen && <Socials />}
       {helpIsOpen && <Help />}
 
-      {/* Levels display */}
-      {levelMountainIsLaunched && <Mountain />}
-      {levelOceanIsLaunched && <Ocean />}
-      {levelJungleIsLaunched && <Jungle />}
-      {levelSavannahIsLaunched && <Savannah />}
+      {/* Stages display */}
+      {gameIsLaunched && <Stage />}
     </>
   );
 };

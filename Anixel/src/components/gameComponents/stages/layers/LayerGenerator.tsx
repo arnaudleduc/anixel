@@ -1,7 +1,9 @@
 import { useTexture, Plane, useCursor } from "@react-three/drei";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { GRID_ROW, GRID_COL } from "../constants/constants";
 import { Texture } from "three";
+import useScenesStore from "../../../../stores/useScenesStore";
+import { useShallow } from "zustand/react/shallow";
 
 export interface Positions {
   minX: number;
@@ -11,28 +13,34 @@ export interface Positions {
 }
 
 export interface LayerGeneratorProps {
-  level: string;
   layer: number;
 }
 
-const LayerGenerator: React.FC<LayerGeneratorProps> = ({ level, layer }) => {
-  const [hovered, setHovered] = useState<boolean>(false);
+const LayerGenerator: React.FC<LayerGeneratorProps> = ({ layer }) => {
+  const { selectedStage } = useScenesStore(
+    useShallow((state) => {
+      return {
+        selectedStage: state.selectedStage,
+      };
+    })
+  );
 
+  const [hovered, setHovered] = useState<boolean>(false);
   useCursor(hovered, "pointer");
 
   const caseRef = useRef<any>({});
 
   const [c1_1, c1_2, c1_3, c2_1, c2_2, c2_3, c3_1, c3_2, c3_3]: Texture[] =
     useTexture([
-      `images/cases/${level}/C1_1.png`,
-      `images/cases/${level}/C1_2.png`,
-      `images/cases/${level}/C1_3.png`,
-      `images/cases/${level}/C2_1.png`,
-      `images/cases/${level}/C2_2.png`,
-      `images/cases/${level}/C2_3.png`,
-      `images/cases/${level}/C3_1.png`,
-      `images/cases/${level}/C3_2.png`,
-      `images/cases/${level}/C3_3.png`,
+      `images/cases/${selectedStage}/C1_1.png`,
+      `images/cases/${selectedStage}/C1_2.png`,
+      `images/cases/${selectedStage}/C1_3.png`,
+      `images/cases/${selectedStage}/C2_1.png`,
+      `images/cases/${selectedStage}/C2_2.png`,
+      `images/cases/${selectedStage}/C2_3.png`,
+      `images/cases/${selectedStage}/C3_1.png`,
+      `images/cases/${selectedStage}/C3_2.png`,
+      `images/cases/${selectedStage}/C3_3.png`,
     ]);
 
   const casesTextures = useMemo<{ [key: string]: Texture[] }>(

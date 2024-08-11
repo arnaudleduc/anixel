@@ -8,7 +8,7 @@
     "anixel": "More Anixel"
   },
 
-  "levels": {
+  "stages": {
     "mountain": {
       "name": "Mountain",
       "description": "Climb the peaks !"
@@ -29,7 +29,7 @@
 
   "areYouSure": {
     "title": "Are you sure you want to quit ?",
-    "subtitle": "All level progression will be lost",
+    "subtitle": "All stage progression will be lost",
     "confirm": "Confirm",
     "cancel": "Cancel"
   }

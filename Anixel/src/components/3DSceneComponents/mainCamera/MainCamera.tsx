@@ -2,11 +2,21 @@ import { PerspectiveCamera } from "@react-three/drei";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
+import useScenesStore from "../../../stores/useScenesStore";
+import { useShallow } from "zustand/react/shallow";
 
 const MainCamera: React.FC = () => {
+  const { boatIsActive, gameIsLaunched } = useScenesStore(
+    useShallow((state) => {
+      return {
+        gameIsLaunched: state.gameIsLaunched,
+        boatIsActive: state.boatIsActive,
+      };
+    })
+  );
+
   const cameraGroup = useRef<THREE.Group<THREE.Object3DEventMap>>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera>(null);
-
   const cursor = useRef({ x: 0, y: 0 });
 
   const mouseMove = (event: MouseEvent) => {
@@ -27,15 +37,18 @@ const MainCamera: React.FC = () => {
   }, []);
 
   useFrame(() => {
-    const parallaxX = -cursor.current.x * 0.5;
-    const parallaxY = cursor.current.y * 0.5;
+    if (boatIsActive || gameIsLaunched) return;
+    else {
+      const parallaxX = -cursor.current.x * 0.5;
+      const parallaxY = cursor.current.y * 0.5;
 
-    if (cameraGroup.current) {
-      // Parallax Position
-      cameraGroup.current.position.x +=
-        (parallaxX - cameraGroup.current.position.x) * 0.1;
-      cameraGroup.current.position.y +=
-        (parallaxY - cameraGroup.current.position.y) * 0.1;
+      if (cameraGroup.current) {
+        // Parallax Position
+        cameraGroup.current.position.x +=
+          (parallaxX - cameraGroup.current.position.x) * 0.1;
+        cameraGroup.current.position.y +=
+          (parallaxY - cameraGroup.current.position.y) * 0.1;
+      }
     }
   });
 

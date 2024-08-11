@@ -22,20 +22,14 @@ interface ScenesStore {
   helpIsOpen: boolean;
   setHelpIsOpen: (v: boolean) => void;
 
-  levelMountainIsLaunched: boolean;
-  setLevelMountainIsLaunched: (v: boolean) => void;
-
-  levelOceanIsLaunched: boolean;
-  setLevelOceanIsLaunched: (v: boolean) => void;
-
-  levelJungleIsLaunched: boolean;
-  setLevelJungleIsLaunched: (v: boolean) => void;
-
-  levelSavannahIsLaunched: boolean;
-  setLevelSavannahIsLaunched: (v: boolean) => void;
-
   showAreYouSureMessage: boolean;
   setShowAreYouSureMessage: (v: boolean) => void;
+
+  selectedStage: string;
+  setSelectedStage: (v: string) => void;
+
+  gameIsLaunched: boolean;
+  setGameIsLaunched: (v: boolean) => void;
 }
 
 const useScenesStore = create<ScenesStore>()((set) => ({
@@ -60,22 +54,14 @@ const useScenesStore = create<ScenesStore>()((set) => ({
   helpIsOpen: false,
   setHelpIsOpen: (v) => set(() => ({ helpIsOpen: v })),
 
-  levelMountainIsLaunched: false,
-  setLevelMountainIsLaunched: (v) =>
-    set(() => ({ levelMountainIsLaunched: v })),
-
-  levelOceanIsLaunched: false,
-  setLevelOceanIsLaunched: (v) => set(() => ({ levelOceanIsLaunched: v })),
-
-  levelJungleIsLaunched: false,
-  setLevelJungleIsLaunched: (v) => set(() => ({ levelJungleIsLaunched: v })),
-
-  levelSavannahIsLaunched: false,
-  setLevelSavannahIsLaunched: (v) =>
-    set(() => ({ levelSavannahIsLaunched: v })),
-
   showAreYouSureMessage: false,
   setShowAreYouSureMessage: (v) => set(() => ({ showAreYouSureMessage: v })),
+
+  selectedStage: "",
+  setSelectedStage: (v) => set(() => ({ selectedStage: v })),
+
+  gameIsLaunched: false,
+  setGameIsLaunched: (v) => set(() => ({ gameIsLaunched: v })),
 }));
 
 export default useScenesStore;

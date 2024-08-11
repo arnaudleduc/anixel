@@ -6,7 +6,7 @@ import AreYouSure from "../../areYouSure/AreYouSure";
 import { Canvas } from "@react-three/fiber";
 import GameCanvas from "../../gameCanvas/GameCanvas";
 
-const Savannah: React.FC = () => {
+const Stage: React.FC = () => {
   const { showAreYouSureMessage, setShowAreYouSureMessage } = useScenesStore(
     useShallow((state) => {
       return {
@@ -18,7 +18,7 @@ const Savannah: React.FC = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen">
-      <div className="rounded-2xl bg-yellow-100 h-5/6 m-12 p-10">
+      <div className="rounded-2xl bg-yellow-100 h-5/6 m-12 p-10 ">
         <FontAwesomeIcon
           icon={faXmark}
           size="2xl"
@@ -26,12 +26,12 @@ const Savannah: React.FC = () => {
           className="cursor-pointer hover:animate-ping"
         />
         <Canvas style={{ width: "100%", height: "95%" }}>
-          <GameCanvas level="savannah" />
+          <GameCanvas />
         </Canvas>
       </div>
-      {showAreYouSureMessage && <AreYouSure level="savannah" />}
+      {showAreYouSureMessage && <AreYouSure />}
     </div>
   );
 };
 
-export default Savannah;
+export default Stage;

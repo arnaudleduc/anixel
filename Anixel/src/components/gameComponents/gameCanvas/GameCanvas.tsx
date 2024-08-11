@@ -1,26 +1,33 @@
-import LayerGenerator from "../levels/layers/LayerGenerator";
+import LayerGenerator from "../stages/layers/LayerGenerator";
 import { Texture } from "three";
 import { OrbitControls, useTexture } from "@react-three/drei";
 import GameCamera from "../gameCamera/GameCamera";
+import LootLayerGenerator from "../stages/layers/LootLayerGenerator";
+import useScenesStore from "../../../stores/useScenesStore";
+import { useShallow } from "zustand/react/shallow";
 
-export interface GameCanvasProps {
-  level: string;
-}
+const GameCanvas: React.FC = () => {
+  const { selectedStage } = useScenesStore(
+    useShallow((state) => {
+      return {
+        selectedStage: state.selectedStage,
+      };
+    })
+  );
 
-const GameCanvas: React.FC<GameCanvasProps> = ({ level }) => {
   const [
     mountainBackground,
     oceanBackground,
     jungleBackground,
     savannahBackground,
   ]: Texture[] = useTexture([
-    "hdr/levelsHDR/HDR_jungle.webp",
-    "hdr/levelsHDR/HDR_jungle.webp",
-    "hdr/levelsHDR/HDR_jungle.webp",
-    "hdr/levelsHDR/HDR_jungle.webp",
+    "hdr/stagesHDR/HDR_mountain.webp",
+    "hdr/stagesHDR/HDR_ocean.webp",
+    "hdr/stagesHDR/HDR_jungle.webp",
+    "hdr/stagesHDR/HDR_savannah.webp",
   ]);
 
-  const levels: { [key: string]: { [key: string]: Texture } } = {
+  const stages: { [key: string]: { [key: string]: Texture } } = {
     mountain: {
       texture: mountainBackground,
     },
@@ -41,18 +48,20 @@ const GameCanvas: React.FC<GameCanvasProps> = ({ level }) => {
       <mesh position={[0, 0, -1]} scale={12}>
         <planeGeometry args={[1.792, 1.024]} />
         <meshBasicMaterial
-          map={levels[level].texture}
+          map={stages[selectedStage].texture}
           opacity={0.6}
           transparent
         />
       </mesh>
       {/* <OrbitControls /> */}
       <GameCamera />
+
       {/* Game */}
-      <LayerGenerator level={level} layer={0} />
-      <LayerGenerator level={level} layer={1} />
-      <LayerGenerator level={level} layer={2} />
-      <LayerGenerator level={level} layer={3} />
+      <LayerGenerator layer={0} />
+      <LootLayerGenerator />
+      {/* <LayerGenerator layer={1} />
+      <LayerGenerator layer={2} />
+      <LayerGenerator layer={3} /> */}
     </>
   );
 };
