@@ -143,6 +143,7 @@ const LayerGenerator: React.FC<LayerGeneratorProps> = ({ layer }) => {
                       : null
                   }
                   color={layer === 0 ? "#C2B280" : undefined}
+                  toneMapped={false}
                 />
               </Plane>
             );

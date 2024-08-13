@@ -59,8 +59,8 @@ const GameCanvas: React.FC = () => {
       {/* Game */}
       <LayerGenerator layer={0} />
       <LootLayerGenerator />
-      {/* <LayerGenerator layer={1} />
-      <LayerGenerator layer={2} />
+      <LayerGenerator layer={1} />
+      {/* <LayerGenerator layer={2} />
       <LayerGenerator layer={3} /> */}
     </>
   );

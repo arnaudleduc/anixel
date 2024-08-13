@@ -1,4 +1,4 @@
-const LEVEL: number = 1;
+const LEVEL: number = 25;
 
 export const CHANCE = 5;
 

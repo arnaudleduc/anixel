@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { CHANCE, Loots } from "./constants/loot";
 import useScenesStore from "../../../../stores/useScenesStore";
 import { useShallow } from "zustand/react/shallow";
-import { Plane, useCursor, useTexture } from "@react-three/drei";
+import { Float, Plane, useCursor, useTexture } from "@react-three/drei";
 import { GRID_COL, GRID_ROW } from "../constants/constants";
 import { Texture } from "three";
 
@@ -15,8 +15,8 @@ const LootLayerGenerator: React.FC = () => {
     })
   );
 
-  const [hovered, setHovered] = useState<boolean>(false);
-  useCursor(hovered, "pointer");
+  // const [hovered, setHovered] = useState<boolean>(false);
+  // useCursor(hovered, "pointer");
 
   const lootRef = useRef<any>({});
 
@@ -54,46 +54,138 @@ const LootLayerGenerator: React.FC = () => {
     "images/cases/loot/LOOT_MONEY_coin.png",
   ]);
 
-  const lootTextures = useMemo<{ [key: string]: Texture[] }>(
-    () => ({
-      beginner: [
-        lootBoostSand,
-        lootBoostStone,
-        lootBoostIron,
-        lootBoostWood,
-        lootBoostPlastic,
-        lootBoostEnergy,
-        lootMoneyCoin,
-      ],
-      intermediate: [
-        lootBoostSand,
-        lootBoostStone,
-        lootBoostIron,
-        lootBoostWood,
-        lootBoostPlastic,
-        lootBoostEnergy,
-        lootMoneyCoin,
-        lootBoostIron2,
-        lootBoostWood2,
-        lootBoostPlastic2,
-      ],
-      expert: [
-        lootBoostSand,
-        lootBoostStone,
-        lootBoostIron,
-        lootBoostWood,
-        lootBoostPlastic,
-        lootBoostEnergy,
-        lootMoneyCoin,
-        lootBoostIron2,
-        lootBoostWood2,
-        lootBoostPlastic2,
-        lootBoostCarbon,
-        lootBoostLatex,
-        lootBoostSilicium,
-      ],
-    }),
+  const mountainBeginnerLoot = useMemo<Texture[]>(
+    () => [
+      lootBoostSand,
+      lootBoostStone,
+      lootBoostIron,
+      lootBoostWood,
+      lootBoostPlastic,
+      lootBoostEnergy,
+      lootMoneyCoin,
+    ],
     []
+  );
+
+  const mountainIntermediateLoot = useMemo<Texture[]>(
+    () => [
+      ...mountainBeginnerLoot,
+      lootBoostIron2,
+      lootBoostWood2,
+      lootBoostPlastic2,
+    ],
+    [mountainBeginnerLoot]
+  );
+
+  const mountainExpertLoot = useMemo<Texture[]>(
+    () => [
+      ...mountainIntermediateLoot,
+      lootBoostCarbon,
+      lootBoostLatex,
+      lootBoostSilicium,
+    ],
+    [mountainIntermediateLoot]
+  );
+
+  const oceanBeginnerLoot = useMemo<Texture[]>(
+    () => [
+      lootBoostSand,
+      lootBoostFish,
+      lootBoostIron,
+      lootBoostWood,
+      lootBoostPlastic,
+      lootBoostEnergy,
+      lootMoneyCoin,
+    ],
+    []
+  );
+
+  const oceanIntermediateLoot = useMemo<Texture[]>(
+    () => [
+      ...oceanBeginnerLoot,
+      lootBoostIron2,
+      lootBoostWood2,
+      lootBoostPlastic2,
+    ],
+    [oceanBeginnerLoot]
+  );
+
+  const oceanExpertLoot = useMemo<Texture[]>(
+    () => [
+      ...oceanIntermediateLoot,
+      lootBoostCarbon,
+      lootBoostLatex,
+      lootBoostSilicium,
+    ],
+    [oceanIntermediateLoot]
+  );
+
+  const jungleBeginnerLoot = useMemo<Texture[]>(
+    () => [
+      lootBoostSand,
+      lootBoostFlower,
+      lootBoostIron,
+      lootBoostWood,
+      lootBoostPlastic,
+      lootBoostEnergy,
+      lootMoneyCoin,
+    ],
+    []
+  );
+
+  const jungleIntermediateLoot = useMemo<Texture[]>(
+    () => [
+      ...jungleBeginnerLoot,
+      lootBoostIron2,
+      lootBoostWood2,
+      lootBoostPlastic2,
+    ],
+    [jungleBeginnerLoot]
+  );
+
+  const jungleExpertLoot = useMemo<Texture[]>(
+    () => [
+      ...jungleIntermediateLoot,
+      lootBoostCarbon,
+      lootBoostLatex,
+      lootBoostSilicium,
+    ],
+    [jungleIntermediateLoot]
+  );
+
+  const savannahBeginnerLoot = useMemo<Texture[]>(
+    () => [
+      lootBoostSand,
+      lootBoostStone,
+      lootBoostFish,
+      lootBoostFlower,
+      lootBoostIron,
+      lootBoostWood,
+      lootBoostPlastic,
+      lootBoostEnergy,
+      lootMoneyCoin,
+    ],
+    []
+  );
+
+  const savannahIntermediateLoot = useMemo<Texture[]>(
+    () => [
+      ...savannahBeginnerLoot,
+      lootBoostIron2,
+      lootBoostWood2,
+      lootBoostPlastic2,
+    ],
+    [savannahBeginnerLoot]
+  );
+
+  const savannahExpertLoot = useMemo<Texture[]>(
+    () => [
+      ...savannahIntermediateLoot,
+      lootBoostCarbon,
+      lootBoostLatex,
+      lootBoostSilicium,
+    ],
+    [savannahIntermediateLoot]
   );
 
   const objectPositions = useMemo(() => {
@@ -105,6 +197,36 @@ const LootLayerGenerator: React.FC = () => {
     };
   }, []);
 
+  const choseTextureBasedOnStageAndStageLevel: (
+    stageLevelName: string
+  ) => Texture[] | undefined = (stageLevelName) => {
+    if (selectedStage === "mountain") {
+      return stageLevelName === "beginner"
+        ? mountainBeginnerLoot
+        : stageLevelName === "intermediate"
+        ? mountainIntermediateLoot
+        : mountainExpertLoot;
+    } else if (selectedStage === "ocean") {
+      return stageLevelName === "beginner"
+        ? oceanBeginnerLoot
+        : stageLevelName === "intermediate"
+        ? oceanIntermediateLoot
+        : oceanExpertLoot;
+    } else if (selectedStage === "jungle") {
+      return stageLevelName === "beginner"
+        ? jungleBeginnerLoot
+        : stageLevelName === "intermediate"
+        ? jungleIntermediateLoot
+        : jungleExpertLoot;
+    } else if (selectedStage === "savannah") {
+      return stageLevelName === "beginner"
+        ? savannahBeginnerLoot
+        : stageLevelName === "intermediate"
+        ? savannahIntermediateLoot
+        : savannahExpertLoot;
+    }
+  };
+
   const lootGrid = useMemo(() => {
     const gridRowArray = Array.from(Array(GRID_ROW).keys());
     const gridColArray = Array.from(Array(GRID_COL).keys());
@@ -114,43 +236,49 @@ const LootLayerGenerator: React.FC = () => {
       (entry) => entry.stage.name === "mountain"
     );
     const stageLevel = Loots[lootLayerIndex].stage.level;
+    const stageLevelName =
+      stageLevel <= 10
+        ? "beginner"
+        : stageLevel > 10 && stageLevel < 20
+        ? "intermediate"
+        : "expert";
     const randMultiplier =
-      Loots[lootLayerIndex].stage.loot[
-        `${
-          stageLevel <= 10
-            ? "beginner"
-            : stageLevel > 10 && stageLevel < 20
-            ? "intermediate"
-            : "expert"
-        }`
-      ].length * CHANCE;
+      Loots[lootLayerIndex].stage.loot[`${stageLevelName}`].length * CHANCE;
 
     return gridRowArray.map((_row, rowIndex) => {
       return (
         <group dispose={null} key={`row-${rowIndex + 1}`}>
           {gridColArray.map((_col, colIndex) => {
             const randTextureIndex = Math.floor(Math.random() * randMultiplier);
-
+            const textureArray =
+              choseTextureBasedOnStageAndStageLevel(stageLevelName);
             return (
-              <Plane
-                args={[1, 1]}
+              <Float
                 key={`loot-layer-${rowIndex}/${colIndex}`}
-                ref={(el) =>
-                  (lootRef.current[`case-layer-${rowIndex}/${colIndex}`] = el)
-                }
-                position={[
-                  colIndex + objectPositions.minX,
-                  rowIndex + objectPositions.minY,
-                  0,
-                ]}
+                rotationIntensity={0}
+                speed={4}
+                floatingRange={[-0.07, 0.07]}
               >
-                <meshBasicMaterial
-                  map={lootTextures.beginner[randTextureIndex]}
-                  color={undefined}
-                  opacity={lootTextures.beginner[randTextureIndex] ? 1 : 0}
-                  transparent
-                />
-              </Plane>
+                <Plane
+                  args={[1, 1]}
+                  ref={(el) =>
+                    (lootRef.current[`case-layer-${rowIndex}/${colIndex}`] = el)
+                  }
+                  position={[
+                    colIndex + objectPositions.minX,
+                    rowIndex + objectPositions.minY,
+                    0,
+                  ]}
+                >
+                  <meshBasicMaterial
+                    map={textureArray?.[randTextureIndex]}
+                    color={undefined}
+                    opacity={textureArray?.[randTextureIndex] ? 1 : 0}
+                    transparent
+                    toneMapped={false}
+                  />
+                </Plane>
+              </Float>
             );
           })}
         </group>
