@@ -1,0 +1,36 @@
+{
+  "shop": "Boutique",
+  "play": "Jouer",
+  "home": "Maison",
+
+  "socials": {
+    "creator": "Suivre le créateur",
+    "anixel": "Plus d'Anixel"
+  },
+
+  "stages": {
+    "mountain": {
+      "name": "Montagne",
+      "description": "Grimpez les sommets !"
+    },
+    "ocean": {
+      "name": "Océan",
+      "description": "Partez naviguer !"
+    },
+    "jungle": {
+      "name": "Jungle",
+      "description": "Plongez dans la verdure !"
+    },
+    "savannah": {
+      "name": "Savanne",
+      "description": "Avezntureez-vous dans les plaines !"
+    }
+  },
+
+  "areYouSure": {
+    "title": "Êtes-vous sûr de vouloir quitter ?",
+    "subtitle": "La progression du niveau sera perdue",
+    "confirm": "Confirmer",
+    "cancel": "Annuler"
+  }
+}

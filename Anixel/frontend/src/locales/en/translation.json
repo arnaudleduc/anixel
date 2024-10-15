@@ -1,0 +1,36 @@
+{
+  "shop": "Shop",
+  "play": "Play",
+  "home": "Home",
+
+  "socials": {
+    "creator": "Follow Anixel' s creator",
+    "anixel": "More Anixel"
+  },
+
+  "stages": {
+    "mountain": {
+      "name": "Mountain",
+      "description": "Climb the peaks !"
+    },
+    "ocean": {
+      "name": "Ocean",
+      "description": "Go sailing !"
+    },
+    "jungle": {
+      "name": "Jungle",
+      "description": "Dive into greenery !"
+    },
+    "savannah": {
+      "name": "Savannah",
+      "description": "Venture into the plains !"
+    }
+  },
+
+  "areYouSure": {
+    "title": "Are you sure you want to quit ?",
+    "subtitle": "All stage progression will be lost",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  }
+}
