@@ -14,7 +14,7 @@
       "description": "Grimpez les sommets !"
     },
     "ocean": {
-      "name": "Océan",
+      "name": "Ocèan",
       "description": "Partez naviguer !"
     },
     "jungle": {
@@ -23,7 +23,22 @@
     },
     "savannah": {
       "name": "Savanne",
-      "description": "Avezntureez-vous dans les plaines !"
+      "description": "Visitez les plaines !"
+    }
+  },
+
+  "rooms": {
+    "workshop": {
+      "name": "Atelier",
+      "description": "Il est temps de bricoler !"
+    },
+    "bedroom": {
+      "name": "Chambre",
+      "description": "Consultez vos Anixels !"
+    },
+    "storage": {
+      "name": "Débarras",
+      "description": "Consultez vos ressources !"
     }
   },
 

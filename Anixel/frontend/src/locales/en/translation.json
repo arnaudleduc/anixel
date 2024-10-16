@@ -27,6 +27,21 @@
     }
   },
 
+  "rooms": {
+    "workshop": {
+      "name": "Workshop",
+      "description": "Time to build something !"
+    },
+    "bedroom": {
+      "name": "Bedroom",
+      "description": "Check your Anixels !"
+    },
+    "storage": {
+      "name": "Storage",
+      "description": "Check your resources !"
+    }
+  },
+
   "areYouSure": {
     "title": "Are you sure you want to quit ?",
     "subtitle": "All stage progression will be lost",

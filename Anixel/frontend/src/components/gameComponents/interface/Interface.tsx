@@ -22,6 +22,9 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import Bedroom from "../home/rooms/bedroom/Bedroom";
+import Workshop from "../home/rooms/workshop/Workshop";
+import StorageRoom from "../home/rooms/storageRoom/StorageRoom";
 
 const audio = new Audio(mainTheme);
 
@@ -46,6 +49,7 @@ const Interface: React.FC = () => {
     helpIsOpen,
     setHelpIsOpen,
     gameIsLaunched,
+    selectedRoom,
   } = useScenesStore(
     useShallow((state) => {
       return {
@@ -60,6 +64,7 @@ const Interface: React.FC = () => {
         helpIsOpen: state.helpIsOpen,
         setHelpIsOpen: state.setHelpIsOpen,
         gameIsLaunched: state.gameIsLaunched,
+        selectedRoom: state.selectedRoom,
       };
     })
   );
@@ -102,12 +107,12 @@ const Interface: React.FC = () => {
 
   return (
     <>
-      <div className="home_page">
+      {/* <div className="home_page">
         <h4>
           Welcome <span>{username}</span>
         </h4>
         <button onClick={logout}>LOGOUT</button>
-      </div>
+      </div> */}
       <ToastContainer />
       {/* Bottom right interface's parameters */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none">
@@ -203,6 +208,11 @@ const Interface: React.FC = () => {
 
       {/* Stages display */}
       {gameIsLaunched && <Stage />}
+
+      {/* Rooms display */}
+      {selectedRoom === "workshop" && <Workshop />}
+      {selectedRoom === "bedroom" && <Bedroom />}
+      {selectedRoom === "storage" && <StorageRoom />}
     </>
   );
 };

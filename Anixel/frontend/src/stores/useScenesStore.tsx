@@ -28,6 +28,9 @@ interface ScenesStore {
   selectedStage: string;
   setSelectedStage: (v: string) => void;
 
+  selectedRoom: string;
+  setSelectedRoom: (v: string) => void;
+
   gameIsLaunched: boolean;
   setGameIsLaunched: (v: boolean) => void;
 }
@@ -59,6 +62,9 @@ const useScenesStore = create<ScenesStore>()((set) => ({
 
   selectedStage: "",
   setSelectedStage: (v) => set(() => ({ selectedStage: v })),
+
+  selectedRoom: "",
+  setSelectedRoom: (v) => set(() => ({ selectedRoom: v })),
 
   gameIsLaunched: false,
   setGameIsLaunched: (v) => set(() => ({ gameIsLaunched: v })),

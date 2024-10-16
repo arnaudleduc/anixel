@@ -6,11 +6,12 @@ import useScenesStore from "../../../stores/useScenesStore";
 import { useShallow } from "zustand/react/shallow";
 
 const MainCamera: React.FC = () => {
-  const { boatIsActive, gameIsLaunched } = useScenesStore(
+  const { boatIsActive, homeIsActive, gameIsLaunched } = useScenesStore(
     useShallow((state) => {
       return {
         gameIsLaunched: state.gameIsLaunched,
         boatIsActive: state.boatIsActive,
+        homeIsActive: state.homeIsActive,
       };
     })
   );
@@ -37,7 +38,7 @@ const MainCamera: React.FC = () => {
   }, []);
 
   useFrame(() => {
-    if (boatIsActive || gameIsLaunched) return;
+    if (boatIsActive || gameIsLaunched || homeIsActive) return;
     else {
       const parallaxX = -cursor.current.x * 0.5;
       const parallaxY = cursor.current.y * 0.5;

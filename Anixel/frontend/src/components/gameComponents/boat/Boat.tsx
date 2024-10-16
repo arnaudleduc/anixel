@@ -52,7 +52,7 @@ const Boat: React.FC = () => {
     },
   ];
 
-  const handleClickOnBoat: (selection: string) => void = (selection) => {
+  const handleClickOnStage: (selection: string) => void = (selection) => {
     setGameIsLaunched(true);
     setSelectedStage(selection);
   };
@@ -77,12 +77,12 @@ const Boat: React.FC = () => {
                   src={stage.image}
                   alt={`${stage.name}'s stage`}
                   className="h-1/2 mb-10 rounded-xl hover:shadow-lg hover:shadow-amber-950 hover:border-4 hover:border-amber-950 hover:cursor-pointer"
-                  onClick={() => handleClickOnBoat(stage.selection)}
+                  onClick={() => handleClickOnStage(stage.selection)}
                 />
                 <h3 className="font-snake uppercase text-xl text-amber-950 mb-4">
                   {stage.name}
                 </h3>
-                <p className="font-snake uppercase text-xs text-amber-950">
+                <p className="font-snake uppercase text-xs text-amber-950 text-center">
                   {stage.description}
                 </p>
               </div>
