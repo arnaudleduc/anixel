@@ -24,6 +24,7 @@ const BedroomLights: React.FC = () => {
   const light19 = useRef<THREE.SpotLight | null>(null);
   const light20 = useRef<THREE.SpotLight | null>(null);
   const light21 = useRef<THREE.SpotLight | null>(null);
+  const focusLight = useRef<THREE.SpotLight | null>(null);
 
   // useHelper(light01, THREE.SpotLightHelper, "red");
   // useHelper(light02, THREE.SpotLightHelper, "cyan");
@@ -46,6 +47,7 @@ const BedroomLights: React.FC = () => {
   // useHelper(light19, THREE.SpotLightHelper, "green");
   // useHelper(light20, THREE.SpotLightHelper, "red");
   // useHelper(light21, THREE.SpotLightHelper, "cyan");
+  // useHelper(focusLight, THREE.SpotLightHelper, "red");
 
   useEffect(() => {
     light01.current?.target.position.set(-2.1, 0.5, -1);
@@ -71,17 +73,28 @@ const BedroomLights: React.FC = () => {
     light19.current?.target.position.set(0.7, -0.5, -1);
     light20.current?.target.position.set(1.4, -0.5, -1);
     light21.current?.target.position.set(2.1, -0.5, -1);
+
+    focusLight.current?.target.position.set(-1.3, 0, 0);
   }, []);
 
   return (
     <>
+      <spotLight
+        ref={focusLight}
+        position={[-1.3, 0, 2]}
+        color={"white"}
+        intensity={3}
+        distance={1.7}
+        angle={Math.PI + 0.4}
+        decay={0.1}
+      />
       <spotLight
         ref={light01}
         position={[-2.1, 0.5, 0.7]}
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -90,7 +103,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -99,7 +112,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -108,7 +121,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -117,7 +130,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -126,7 +139,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -135,7 +148,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
 
@@ -145,7 +158,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -154,7 +167,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -163,7 +176,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -172,7 +185,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -181,7 +194,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -190,7 +203,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -199,7 +212,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
 
@@ -209,7 +222,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -218,7 +231,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -227,7 +240,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -236,7 +249,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -245,7 +258,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -254,7 +267,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
       <spotLight
@@ -263,7 +276,7 @@ const BedroomLights: React.FC = () => {
         color={"white"}
         intensity={16}
         distance={0.79}
-        angle={Math.PI}
+        angle={Math.PI + 0.1}
         decay={0.6}
       />
     </>

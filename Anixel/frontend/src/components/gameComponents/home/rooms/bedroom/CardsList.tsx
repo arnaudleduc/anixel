@@ -1,18 +1,35 @@
 import * as THREE from "three";
-import { Box, Text, useCursor, useGLTF, useTexture } from "@react-three/drei";
-import { GLTF } from "three-stdlib";
+import {
+  Center,
+  Text3D,
+  useCursor,
+  useGLTF,
+  useTexture,
+} from "@react-three/drei";
 import { useState } from "react";
+import useScenesStore from "../../../../../stores/useScenesStore";
+import { useShallow } from "zustand/react/shallow";
 
-interface Anixels {
+export interface Anixels {
   number: number;
   name: string;
-  rarity: string;
+  rarity?: string;
   position?: number[];
   texturePath?: THREE.Texture;
 }
 
 const CardsList: React.FC = () => {
+  const { selectedAnixelCard, setSelectedAnixelCard } = useScenesStore(
+    useShallow((state) => {
+      return {
+        selectedAnixelCard: state.selectedAnixelCard,
+        setSelectedAnixelCard: state.setSelectedAnixelCard,
+      };
+    })
+  );
+
   const [isCardHover, setIsCardHover] = useState<boolean>(false);
+  // const [anixelZoom, setAnixelZoom] = useState<string>("");
 
   useCursor(isCardHover);
 
@@ -89,171 +106,234 @@ const CardsList: React.FC = () => {
       number: 1,
       name: "Croxel",
       rarity: "Uncommon",
-      position: [-2.1, 0.5, 0.7],
+      position: [-2.1, 0.35, 0.02],
       texturePath: card1Texture,
     },
     {
       number: 2,
       name: "Chixel",
       rarity: "Uncommon",
-      position: [-1.4, 0.5, 0.7],
+      position: [-1.4, 0.35, 0.02],
       texturePath: card2Texture,
     },
     {
       number: 3,
       name: "Yoxel",
       rarity: "Uncommon",
-      position: [-0.7, 0.5, 0.7],
+      position: [-0.7, 0.35, 0.02],
       texturePath: card3Texture,
     },
     {
       number: 4,
       name: "Gixel",
       rarity: "Common",
-      position: [0, 0.5, 0.7],
+      position: [0, 0.35, 0.02],
       texturePath: card4Texture,
     },
     {
       number: 5,
       name: "Raxel",
       rarity: "Common",
-      position: [0.7, 0.5, 0.7],
+      position: [0.7, 0.35, 0.02],
       texturePath: card5Texture,
     },
     {
       number: 6,
       name: "Monxel",
       rarity: "Common",
-      position: [1.4, 0.5, 0.7],
+      position: [1.4, 0.35, 0.02],
       texturePath: card6Texture,
     },
     {
       number: 7,
       name: "Penxel",
       rarity: "Uncommon",
-      position: [2.1, 0.5, 0.7],
+      position: [2.1, 0.35, 0.02],
       texturePath: card7Texture,
     },
     {
       number: 8,
       name: "Parxel",
       rarity: "Rare",
-      position: [-2.1, 0, 0.7],
+      position: [-2.1, -0.15, 0.02],
       texturePath: card8Texture,
     },
     {
       number: 9,
       name: "Emuxel",
       rarity: "Common",
-      position: [-1.4, 0, 0.7],
+      position: [-1.4, -0.15, 0.02],
       texturePath: card9Texture,
     },
     {
       number: 10,
       name: "Foxel",
       rarity: "Common",
-      position: [-0.7, 0, 0.7],
+      position: [-0.7, -0.15, 0.02],
       texturePath: card10Texture,
     },
     {
       number: 11,
       name: "Fixel",
       rarity: "Common",
-      position: [0, 0, 0.7],
+      position: [0, -0.15, 0.02],
       texturePath: card11Texture,
     },
     {
       number: 12,
       name: "Snaxel",
       rarity: "Uncommon",
-      position: [0.7, 0, 0.7],
+      position: [0.7, -0.15, 0.02],
       texturePath: card12Texture,
     },
     {
       number: 13,
       name: "Seaxel",
       rarity: "Rare",
-      position: [1.4, 0, 0.7],
+      position: [1.4, -0.15, 0.02],
       texturePath: card13Texture,
     },
     {
       number: 14,
       name: "Camxel",
       rarity: "Common",
-      position: [2.1, 0, 0.7],
+      position: [2.1, -0.15, 0.02],
       texturePath: card14Texture,
     },
     {
       number: 15,
       name: "Cowxel",
       rarity: "Common",
-      position: [-2.1, -0.5, 0.7],
+      position: [-2.1, -0.65, 0.02],
       texturePath: card15Texture,
     },
     {
       number: 16,
       name: "Froxel",
       rarity: "Common",
-      position: [-1.4, -0.5, 0.7],
+      position: [-1.4, -0.65, 0.02],
       texturePath: card16Texture,
     },
     {
       number: 17,
       name: "Touxel",
       rarity: "Uncommon",
-      position: [-0.7, -0.5, 0.7],
+      position: [-0.7, -0.65, 0.02],
       texturePath: card17Texture,
     },
     {
       number: 18,
       name: "Rhixel",
       rarity: "Uncommon",
-      position: [0, -0.5, 0.7],
+      position: [0, -0.65, 0.02],
       texturePath: card18Texture,
     },
     {
       number: 19,
       name: "Peaxel",
       rarity: "Epic",
-      position: [0.7, -0.5, 0.7],
+      position: [0.7, -0.65, 0.02],
       texturePath: card19Texture,
     },
     {
       number: 20,
       name: "Chaxel",
       rarity: "Epic",
-      position: [1.4, -0.5, 0.7],
+      position: [1.4, -0.65, 0.02],
       texturePath: card20Texture,
     },
     {
       number: 21,
       name: "Draxel",
       rarity: "Mythic",
-      position: [2.1, -0.5, 0.7],
+      position: [2.1, -0.65, 0.02],
       texturePath: card21Texture,
     },
   ];
 
   const { nodes: cardMeshGeometry } = useGLTF("/models/cardMesh.glb");
+  const { nodes: chasseCommonGeometry } = useGLTF("/models/chasseCommon.glb");
+  const { nodes: chasseUncommonGeometry } = useGLTF(
+    "/models/chasseUncommon.glb"
+  );
+  const { nodes: chasseRareGeometry } = useGLTF("/models/chasseRare.glb");
+  const { nodes: chasseEpicGeometry } = useGLTF("/models/chasseEpic.glb");
+  const { nodes: chasseMythicGeometry } = useGLTF("/models/chasseMythic.glb");
+
+  const chasseMaterial = new THREE.MeshStandardMaterial({
+    map: card1Texture,
+    metalness: 0,
+    roughness: 0.9,
+  });
 
   return ANIXELS.map((anixel) => {
     return (
       <group key={`Anixel-card-n${anixel.number}`} position={anixel.position}>
-        <mesh geometry={cardMeshGeometry.cardMesh.geometry}>
+        {anixel.rarity === "Common" && (
+          <mesh
+            position={[0, 0.37, 0.02]}
+            geometry={chasseCommonGeometry.chasseCommon.geometry}
+            material={chasseMaterial}
+          />
+        )}
+        {anixel.rarity === "Uncommon" && (
+          <mesh
+            position={[0, 0.37, 0.02]}
+            geometry={chasseUncommonGeometry.chasseUncommon.geometry}
+            material={chasseMaterial}
+          />
+        )}
+        {anixel.rarity === "Rare" && (
+          <mesh
+            position={[0, 0.37, 0.02]}
+            geometry={chasseRareGeometry.chasseRare.geometry}
+            material={chasseMaterial}
+          />
+        )}
+        {anixel.rarity === "Epic" && (
+          <mesh
+            position={[0, 0.37, 0.02]}
+            geometry={chasseEpicGeometry.chasseEpic.geometry}
+            material={chasseMaterial}
+          />
+        )}
+        {anixel.rarity === "Mythic" && (
+          <mesh
+            position={[0, 0.37, 0.02]}
+            geometry={chasseMythicGeometry.chasseMythic.geometry}
+            material={chasseMaterial}
+          />
+        )}
+        <mesh
+          geometry={cardMeshGeometry.cardMesh.geometry}
+          onPointerEnter={() => setIsCardHover(true)}
+          onPointerLeave={() => setIsCardHover(false)}
+          onClick={() =>
+            setSelectedAnixelCard({
+              name: anixel.name,
+              number: anixel.number,
+              rarity: anixel.rarity,
+              texturePath: anixel.texturePath,
+            })
+          }
+        >
           <meshStandardMaterial
             map={anixel.texturePath}
             metalness={0}
             roughness={0.9}
           />
         </mesh>
-        <Text
-          position={[0, 0.035, 0.02]}
-          font="/fonts/snakeInTheBoot.ttf"
-          color="white"
-          fontSize={0.05}
-        >
-          {anixel.name.toUpperCase()}
-        </Text>
+        <Center position={[0, 0.05, 0]}>
+          <Text3D
+            font="/fonts/snakeInTheBoot.typeface.json"
+            size={0.04}
+            height={0.02}
+            curveSegments={12}
+          >
+            {anixel.name.toUpperCase()}
+            <meshStandardMaterial color={"#FEF9C3"} />
+          </Text3D>
+        </Center>
       </group>
     );
   });
@@ -261,3 +341,8 @@ const CardsList: React.FC = () => {
 
 export default CardsList;
 useGLTF.preload("/models/cardMesh.glb");
+useGLTF.preload("/models/chasseCommon.glb");
+useGLTF.preload("/models/chasseUncommon.glb");
+useGLTF.preload("/models/chasseRare.glb");
+useGLTF.preload("/models/chasseEpic.glb");
+useGLTF.preload("/models/chasseMythic.glb");

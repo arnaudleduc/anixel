@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { Anixels } from "../components/gameComponents/home/rooms/bedroom/CardsList";
 
 interface ScenesStore {
   shopIsActive: boolean;
@@ -33,6 +34,9 @@ interface ScenesStore {
 
   gameIsLaunched: boolean;
   setGameIsLaunched: (v: boolean) => void;
+
+  selectedAnixelCard: Anixels | null;
+  setSelectedAnixelCard: (v: Anixels | null) => void;
 }
 
 const useScenesStore = create<ScenesStore>()((set) => ({
@@ -68,6 +72,9 @@ const useScenesStore = create<ScenesStore>()((set) => ({
 
   gameIsLaunched: false,
   setGameIsLaunched: (v) => set(() => ({ gameIsLaunched: v })),
+
+  selectedAnixelCard: null,
+  setSelectedAnixelCard: (v) => set(() => ({ selectedAnixelCard: v })),
 }));
 
 export default useScenesStore;

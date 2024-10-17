@@ -6,6 +6,8 @@ import { Canvas } from "@react-three/fiber";
 import BedroomCamera from "./BedroomCamera";
 import BedroomLights from "./BedroomLights";
 import CardsList from "./CardsList";
+import CardFocus from "./CardFocus";
+import { Box } from "@react-three/drei";
 
 const Bedroom: React.FC = () => {
   const { setSelectedRoom } = useScenesStore(
@@ -27,8 +29,8 @@ const Bedroom: React.FC = () => {
         <Canvas style={{ width: "100%", height: "95%" }}>
           <BedroomCamera />
           <CardsList />
-          {/* <ambientLight intensity={1} /> */}
           <BedroomLights />
+          <CardFocus />
         </Canvas>
       </div>
     </div>
